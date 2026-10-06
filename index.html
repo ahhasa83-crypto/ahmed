@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العودة للخدمات العقارية والتوثيق</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-beige-light: #FAF8F5;
+            --bg-beige-card: #FFFFFF;
+            --bg-beige-secondary: #F3EFEA;
+            --primary-navy: #0B2942;
+            --primary-navy-dark: #0B2942;
+            --accent-green: #2D6A4F;
+            --accent-green-bright: #40916C;
+            --whatsapp-green: #25D366;
+            --border-beige: #E6DFD5;
+            --glow-green: rgba(64, 145, 108, 0.35);
+            --shadow-soft: 0 10px 30px rgba(26, 43, 60, 0.05);
+            --shadow-hover: 0 20px 40px rgba(26, 43, 60, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-beige-light);
+            color: #0B2942;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-beige-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-beige);
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #0B2942;
+            padding: 2px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-navy);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-navy));
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px var(--glow-green);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, rgba(64, 145, 108, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(26, 43, 60, 0.05) 0%, transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-beige-secondary);
+            border: 1px solid var(--border-beige);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--primary-navy);
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--accent-green);
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-navy));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #6C757D;
+            margin-bottom: 35px;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-glow {
+            background: var(--accent-green);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px var(--glow-green);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(64, 145, 108, 0.6);
+            background: var(--accent-green-bright);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            background: #20ba5a;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-logo-wrapper {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            background: #0B2942;
+            border-radius: 30px;
+            box-shadow: var(--shadow-hover);
+            border: 2px solid var(--accent-green);
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+            max-width: 380px;
+            width: 100%;
+        }
+
+        .hero-logo-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .phone-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 800;
+            color: #fff;
+            direction: ltr;
+            margin-top: 15px;
+        }
+
+        /* Floating Cards */
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-beige);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3;
+            animation: float 4s ease-in-out infinite alternate;
+        }
+
+        .floating-card i {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            background: var(--bg-beige-secondary);
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .floating-card div h4 { font-size: 0.95rem; color: var(--primary-navy); }
+        .floating-card div p { font-size: 0.8rem; color: #6C757D; }
+
+        .fc-1 { top: -20px; right: -20px; animation-delay: 0s; }
+        .fc-2 { bottom: 10px; left: -30px; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Moving Ticker Bar */
+        .ticker-wrap {
+            width: 100%;
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .ticker-item i { color: var(--accent-green-bright); }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-subtitle {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            font-weight: 800;
+        }
+
+        /* Services Grid Section */
+        .services-section {
+            padding: 100px 0;
+            background: var(--bg-beige-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-beige-card);
+            border-radius: 20px;
+            padding: 35px 25px;
+            border: 1px solid var(--border-beige);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), var(--primary-navy));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(64, 145, 108, 0.3);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            background: var(--bg-beige-secondary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--accent-green);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent-green);
+            color: #fff;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-navy);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #6C757D;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-card:hover .service-btn {
+            gap: 12px;
+            color: var(--primary-navy);
+        }
+
+        /* Why Choose Us Section */
+        .why-section {
+            padding: 100px 0;
+            background: var(--bg-beige-secondary);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-beige);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .why-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--bg-beige-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-navy);
+        }
+
+        .why-card h4 { font-size: 1.2rem; color: var(--primary-navy); margin-bottom: 10px; }
+        .why-card p { color: #6C757D; font-size: 0.9rem; }
+
+        /* Workflow Steps */
+        .steps-section {
+            padding: 100px 0;
+            background: var(--bg-beige-light);
+        }
+
+        .steps-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-beige);
+            text-align: center;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-navy);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+        }
+
+        .step-card h4 { color: var(--primary-navy); margin-bottom: 10px; font-size: 1.1rem; }
+        .step-card p { color: #6C757D; font-size: 0.85rem; }
+
+        /* Modal Overlay & Popup Form */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 26, 36, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: #fff;
+            width: 100%;
+            max-width: 520px;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.8) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-beige);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--bg-beige-secondary);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--primary-navy);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-header h3 { font-size: 1.5rem; color: var(--primary-navy); margin-bottom: 5px; }
+        .modal-header p { color: #6C757D; font-size: 0.9rem; margin-bottom: 20px; }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--primary-navy); font-size: 0.9rem; }
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-beige);
+            background: var(--bg-beige-light);
+            font-size: 1rem;
+            color: #0B2942;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--whatsapp-green);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover { background: #20ba5a; transform: translateY(-2px); }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-green);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+
+        .floating-whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy-dark);
+            color: #fff;
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: #0B2942;
+            padding: 8px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-green);
+        }
+
+        .contact-info { list-style: none; }
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+        .contact-info i { color: var(--accent-green-bright); font-size: 1.1rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 35px; }
+            .hero-actions { justify-content: center; }
+            .hero-title { font-size: 2.3rem; }
+            .nav-links { display: none; }
+            .floating-card { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo-container">
+                <img src="photo_2026-10-06_08-14-49.jpg" alt="العودة للخدمات العقارية" class="logo-img">
+                <div class="logo-text">
+                    أحمد العودة
+                    <span>للخدمات العقارية والتوثيق</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#why-us">لماذا العودة؟</a></li>
+                <li><a href="#steps">آلية العمل</a></li>
+            </ul>
+            <button class="nav-btn" onclick="openModal('طلب خدمة عامة')">
+                <i class="fa-solid fa-paper-plane"></i>
+                اطلب خدمتك الآن
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-award"></i>
+                    موثق معتمد - خدمات توثيق سريعة
+                </div>
+                <h1 class="hero-title">
+                    خدمات التوثيق العقاري والمالي <span>بين يديك بسهولة</span>
+                </h1>
+                <p class="hero-desc">
+                    نقدم كافة خدمات التوثيق والإفراغات العقارية، الوكالات، والعقود الرسمية دون الحاجة لزيارة كتابة العدل.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-glow" onclick="openModal('استفسار مباشر')">
+                        <i class="fa-solid fa-file-signature"></i>
+                        طلب خدمة الآن
+                    </button>
+                    <a href="https://wa.me/966547812926?text=السلام%20عليكم%2C%20أود%20الاستفسار%20عن%20خدمات%20التوثيق" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        راسلنا واتساب
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Visual Card displaying Logo Image -->
+            <div class="hero-visual reveal">
+                <div class="main-logo-wrapper">
+                    <img src="photo_2026-10-06_08-14-49.jpg" alt="شعار العودة للخدمات العقارية" class="hero-logo-img">
+                    <div class="phone-tag"><i class="fa-solid fa-phone"></i> 0547812926</div>
+                </div>
+                
+                <div class="floating-card fc-1">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <h4>توثيق معتمد</h4>
+                        <p>رسمي 100%</p>
+                    </div>
+                </div>
+
+                <div class="floating-card fc-2">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <h4>إنجاز فورى</h4>
+                        <p>خلال وقت قياسي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Moving Services Ticker Bar -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> الإفراغ العقاري</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> إنشاء وكالة</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> الإقرارات المالية</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> الرهون العقارية</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> فسخ وكالة</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> عقد وتأسيس شركة</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> إدارة عقود</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> توثيق مستأجر</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> تعديل بيانات عقارية</div>
+            <div class="ticker-item"><i class="fa-solid fa-check-circle"></i> نقل ملكية العقارات</div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">خدماتنا المتميزة</span>
+                <h2 class="section-title">خدمات التوثيق العقاري والعدلي</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal" onclick="openModal('الإفراغ العقاري')">
+                    <div class="service-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+                    <h3>الإفراغ العقاري</h3>
+                    <p>نقل ملكية العقار بين البائع والمشتري بشكل رسمي وسريع مع ضمان صحة الإجراءات.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('إنشاء وكالة')">
+                    <div class="service-icon"><i class="fa-solid fa-file-pen"></i></div>
+                    <h3>إنشاء وكالة</h3>
+                    <p>إصدار جميع أنواع الوكالات الشرعية للأفراد والمؤسسات فورياً مع الاعتماد الرسمي.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('الإقرارات المالية')">
+                    <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3>الإقرارات المالية</h3>
+                    <p>توثيق الإقرارات بالدين أو الاستلام والأنصبة المالية برسمية تضمن حقوق الطرفين.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('الرهون العقارية')">
+                    <div class="service-icon"><i class="fa-solid fa-building-lock"></i></div>
+                    <h3>الرهون العقارية</h3>
+                    <p>تسجيل ورهن العقارات أو فك الرهن بسرعة وسلاسة وفق الأنظمة المعتمدة.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('فسخ وكالة')">
+                    <div class="service-icon"><i class="fa-solid fa-file-circle-xmark"></i></div>
+                    <h3>فسخ وكالة</h3>
+                    <p>إلغاء وفسخ الوكالات القائمة وإشعار الأطراف المعنية إلكترونياً بفعالية.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('عقد وتأسيس شركة')">
+                    <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>عقد وتأسيس شركة</h3>
+                    <p>توثيق عقود تأسيس الشركات وتعديل ملحقاتها وبنودها بكل دقة وسهولة.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('إدارة عقود')">
+                    <div class="service-icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <h3>إدارة عقود</h3>
+                    <p>تنظيم ومتابعة العقود العقارية والإيجارية والاشتراطات الخاصة بها.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('توثيق مستأجر')">
+                    <div class="service-icon"><i class="fa-solid fa-user-check"></i></div>
+                    <h3>توثيق مستأجر</h3>
+                    <p>توثيق بيانات المستأجرين والعقود السكنية والتجارية عبر المنصات المعتمدة.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('تعديل بيانات عقارية')">
+                    <div class="service-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <h3>تعديل بيانات عقارية</h3>
+                    <p>تحديث وتعديل معلومات الصكوك والعقارات وتصحيح البيانات اللازمة.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+
+                <div class="service-card reveal" onclick="openModal('نقل ملكية العقارات')">
+                    <div class="service-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>نقل ملكية العقارات</h3>
+                    <p>إنهاء كافة إجراءات نقل الملكيات العقارية بسهولة وبأقل وقت ممكن.</p>
+                    <span class="service-btn">طلب عبر الواتساب <i class="fa-solid fa-arrow-left"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-section" id="why-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">مميزاتنا</span>
+                <h2 class="section-title">لماذا أحمد العودة؟</h2>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>خدمة متكاملة</h4>
+                    <p>نغطي كافة احتياجاتك العقارية والتوثيقية في مكان واحد وبأعلى جودة.</p>
+                </div>
+
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+                    <h4>لا حاجة لزيارة كتابة العدل</h4>
+                    <p>نوفر عليك الوقت والجهد بإنهاء المعاملات في موقعك أو إلكترونياً.</p>
+                </div>
+
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fa-solid fa-users"></i></div>
+                    <h4>أسعار خاصة للمجموعات</h4>
+                    <p>عروض متميزة وخاصة للأفراد والمؤسسات والشركات الكبيرة.</p>
+                </div>
+
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                    <h4>أمان وموثوقية</h4>
+                    <p>حماية كاملة لبياناتك ومعاملات قانونية موثوقة ومضمونة 100%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Steps -->
+    <section class="steps-section" id="steps">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">سهولة الإجراءات</span>
+                <h2 class="section-title">خطوات آلية العمل</h2>
+            </div>
+
+            <div class="steps-wrapper">
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <h4>اختيار الخدمة</h4>
+                    <p>حدد الخدمة التي تحتاجها من قائمة خدماتنا التوثيقية.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">2</div>
+                    <h4>إرسال التفاصيل</h4>
+                    <p>قم بإرسال بياناتك عبر نموذج طلب الواتساب في الموقع.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">3</div>
+                    <h4>التحقق والتوثيق</h4>
+                    <p>نقوم بمراجعة المستندات والتحقق منها ومباشرة التوثيق المعتمد.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">4</div>
+                    <h4>إتمام المعاملة</h4>
+                    <p>استلام صكك أو وثيقتك رسمياً ومباشرة بدون أي عناء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Popup Form -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h3 id="modalServiceName">طلب خدمة</h3>
+                <p>سيعيد هذا النموذج توجيهك فوراً لرقم الواتساب مع البيانات المكتوبة</p>
+            </div>
+            <form id="serviceForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="custName" class="form-control" placeholder="أدخل اسمك الكريم" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الجوال</label>
+                    <input type="tel" id="custPhone" class="form-control" placeholder="05XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>تفاصيل الاستفسار أو المعاملة (اختياري)</label>
+                    <textarea id="custDetails" class="form-control" rows="3" placeholder="أكتب التفاصيل هنا..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    إرسال الطلب عبر الواتساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/966547812926?text=السلام%20عليكم%2C%20أود%20الاستفسار%20عن%20خدماتكم" target="_blank" class="floating-whatsapp-btn" title="تواصل عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="photo_2026-10-06_08-14-49.jpg" alt="شعار أحمد العودة" class="footer-logo">
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.8;">مكتب أحمد العودة للخدمات العقارية والتوثيق - خدمات توثيق معتمدة وسريعة في جميع أنحاء المملكة. نضمن لك إنجاز المعاملات بأعلى معايير الدقة والأمان.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#hero" style="color: rgba(255,255,255,0.7); text-decoration: none;">الرئيسية</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#services" style="color: rgba(255,255,255,0.7); text-decoration: none;">الخدمات</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#why-us" style="color: rgba(255,255,255,0.7); text-decoration: none;">لماذا العودة؟</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#steps" style="color: rgba(255,255,255,0.7); text-decoration: none;">آلية العمل</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">تواصل معنا المباشر</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-phone"></i> 0547812926</li>
+                        <li><i class="fa-brands fa-whatsapp"></i> 0547812926</li>
+                        <li><i class="fa-solid fa-clock"></i> متواجدون لخدمتكم 24 ساعة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة © العودة للخدمات العقارية والتوثيق 2026
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        const WHATSAPP_NUMBER = "966547812926";
+        let currentServiceSelected = "طلب خدمة عامة";
+
+        function openModal(serviceName) {
+            currentServiceSelected = serviceName || 'طلب خدمة عامة';
+            document.getElementById('modalServiceName').innerText = 'طلب: ' + currentServiceSelected;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const details = document.getElementById('custDetails').value.trim();
+
+            let message = `مرحباً أستاذ أحمد العودة 👋%0A`;
+            message += `أود طلب خدمة: *${currentServiceSelected}*%0A%0A`;
+            message += `👤 *الاسم:* ${name}%0A`;
+            message += `📱 *الجوال:* ${phone}%0A`;
+            
+            if(details) {
+                message += `📝 *التفاصيل:* ${details}%0A`;
+            }
+            
+            message += `%0Aأرجو التواصل معي لتكملة الإجراءات.`;
+
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeModal();
+            document.getElementById('serviceForm').reset();
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>
